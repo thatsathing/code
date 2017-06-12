@@ -1,4 +1,3 @@
-var ball;
 var paddleLeft;
 var paddleRight;
 
@@ -6,19 +5,22 @@ var ballRad = 10;
 
 var scoreLeft = 0;
 var scoreRight = 0;
+var balls = [];
 
 function setup() {
     createCanvas(windowWidth-4,windowHeight-4);
     noStroke();
-    ball = new Ball();
+    balls[0] = new Ball();
     paddleLeft = new Paddle(0);
     paddleRight = new Paddle(1);
 }
 
 function draw() {
     background(0);
-    ball.show();
-    ball.update();
+    for (var i = 0; i < balls.length; i++) {
+        balls[i].show();
+        balls[i].update();
+    }
     checkKeys();
     paddleLeft.show();
     paddleRight.show();
@@ -43,7 +45,7 @@ function checkKeys() {
         paddleLeft.checkCollision();
     }
     if (keyIsDown(82)) {
-        ball = new Ball();
+        balls.push(new Ball());
     }
 }
 

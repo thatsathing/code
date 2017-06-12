@@ -54,12 +54,19 @@ Ball.prototype.checkCollision = function() {
     // Check Left boundary
     if (this.x-ballRad<=0) {
         scoreRight++;
-        ball = new Ball();
+        this.resetVars();
     }
 
     // Check Right boundary
     if (this.x+ballRad>=width) {
         scoreLeft++;
-        ball = new Ball();
+        this.resetVars();
     }
+}
+
+Ball.prototype.resetVars = function() {
+    this.x = width/2
+    this.y = width/2
+    this.xVel = random(-4,4);
+    this.yVel = random(-4,4);
 }
